@@ -1,0 +1,14 @@
+rules:
+  - id: HttpOnly_rule
+    pattern: SESSION_COOKIE_HTTPONLY = True
+    message: on HttpOnly
+    languages:
+      - python
+    severity: WARNING
+    metadata:
+      category: security
+      subcategory:
+        - guardrail
+      technology:
+        - django
+      source_rule_url: https://www.stackhawk.com/blog/django-xss-examples-prevention/#django-xss-prevention

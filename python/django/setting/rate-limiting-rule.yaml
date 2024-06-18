@@ -1,0 +1,28 @@
+rules:
+  - id: rate_limiting_rule
+    pattern: |
+      REST_FRAMEWORK = {
+           
+           "DEFAULT_THROTTLE_CLASSES": [
+               "rest_framework.throttling.UserRateThrottle",
+               "rest_framework.throttling.AnonRateThrottle"
+           ],
+           "DEFAULT_THROTTLE_RATES": {
+               "anon": ".../...",
+               "user": ".../..."
+           }
+                 }
+    message: rate limiting
+    languages:
+      - python
+    severity: WARNING
+    metadata:
+      category: security
+      cwe:
+        - "CWE 770: Allocation of Resources Without Limits or Throttling"
+      owasp:
+        - A5:2021 Security Misconfiguration
+      technology:
+        - django
+      subcategory:
+        - audit

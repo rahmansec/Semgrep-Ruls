@@ -1,0 +1,16 @@
+rules:
+  - id: HSTS_rule
+    pattern: |
+      SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+      SECURE_HSTS_SECONDS= ...
+    message: "on HSTS "
+    languages:
+      - python
+    severity: WARNING
+    metadata:
+      category: security
+      subcategory:
+        - guardrail
+      technology:
+        - django
+      source_rule_url: https://www.stackhawk.com/blog/django-http-strict-transport-security-guide-what-it-is-and-how-to-enable-it

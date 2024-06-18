@@ -1,0 +1,27 @@
+rules:
+- id: xss-render-method
+  patterns:
+    - pattern: |
+        $VAR={"...":$X}
+        ...
+        return render(request,...,$VAR)
+    - pattern-not: |
+        $VAR={"...":"..."}
+        ...
+        return render(request,...,$VAR)
+  message: XSS
+  languages: [python]
+  severity: WARNING
+  metadata: 
+      category: security
+      subcategory:
+        - vuln
+      cwe:
+        - "CWE 692: Incomplete Denylist to Cross-Site Scripting"
+      confidence: MEDIUM
+      likelihood: MEDIUM
+      impact: MEDIUM
+      owasp:
+        - A7:2017 Cross-Site Scripting (XSS)
+        - A3:2021 Injection
+      

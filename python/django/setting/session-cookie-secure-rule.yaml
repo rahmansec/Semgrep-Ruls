@@ -1,0 +1,29 @@
+rules:
+- id: cookie_secure_rule
+  # patterns:
+  #   - pattern: |
+  #       INSTALLED_APPS = [
+  #           ...
+  #           'django.contrib.sessions',
+  #           ...
+  #       ]
+        
+  #       MIDDLEWARE = [
+  #           ...
+  #           'django.contrib.sessions.middleware.SessionMiddleware',
+  #           ...
+  #       ]
+  #   - pattern-inside: 
+  pattern: SESSION_COOKIE_SECURE=False
+  message: SESSION COOKIE SECURE
+  languages: [python]
+  severity: WARNING
+  metadata: 
+      category: security
+      subcategory:
+        - guardrail
+      owasp:
+        - A5:2021 Security Misconfiguration
+      technology:
+        - django
+      

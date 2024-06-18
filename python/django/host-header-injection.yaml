@@ -1,0 +1,20 @@
+rules:
+  - id: ALLOWED_HOSTS
+    pattern: ALLOWED_HOSTS = ["*"]
+    message: HTTP Host header attacks
+    languages:
+      - python
+    severity: WARNING
+    metadata:
+      category: security
+      subcategory:
+        - vuln
+      cwe:
+        - "CWE 644: Improper Neutralization of HTTP Headers for Scripting Syntax"
+      confidence: MEDIUM
+      likelihood: HIGH
+      impact: MEDIUM
+      owasp:
+        - A3:2021 Injection
+      technology:
+        - django

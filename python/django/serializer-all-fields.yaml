@@ -1,0 +1,25 @@
+rules:
+- id: fildes
+  pattern: |
+      class Meta:
+              ...
+              fields = '__all__'
+              ...
+  message: Access is broken
+  languages: [python]
+  severity: ERROR
+  metadata: 
+      category: security
+      subcategory:
+        - vuln
+      cwe:
+        - "CWE 284: The software does not restrict or incorrectly restricts access to
+          a resource from an unauthorized actor."
+      confidence: MEDIUM
+      likelihood: HIGH
+      impact: HIGH
+      owasp:
+        - A1:2021 Broken Access Control
+      technology:
+        - django
+      

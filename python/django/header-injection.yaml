@@ -1,0 +1,30 @@
+rules:
+  - id: header_injection
+    languages:
+      - python
+    message: Header Injection
+    mode: taint
+    pattern-sources:
+      - pattern: $X = $E.request.META.get("...")
+      - pattern: $X = request.headers.get(...)
+    pattern-sinks:
+      - pattern: |
+        if $X: ...
+      - pattern: |
+          if($X):
+            ...
+      - pattern: |
+          if($X=="..."):
+            ...      
+    severity: WARNING
+    metadata:
+      category: security
+      subcategory:
+        - vuln
+      confidence: MEDIUM
+      likelihood: MEDIUM
+      impact: LOW
+      owasp:
+        - A4:2021 Insecure Design
+      technology:
+        - django

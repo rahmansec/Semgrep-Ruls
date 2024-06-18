@@ -1,0 +1,20 @@
+rules:
+  - id: cloud_access_key_rule
+    patterns:
+      - pattern: CLOUD_ACCESS_KEY="..."
+      - pattern-not-inside: CLOUD_ACCESS_KEY= os.getenv("CLOUD_ACCESS_KEY")
+    message: Misconfiguration
+    languages:
+      - python
+    severity: WARNING
+    metadata:
+      category: security
+      subcategory:
+        - audit
+      confidence: MEDIUM
+      likelihood: MEDIUM
+      impact: HIGH
+      owasp:
+        - A5:2021 Security Misconfiguration
+      technology:
+        - django

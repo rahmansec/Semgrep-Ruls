@@ -1,0 +1,35 @@
+rules:
+  - id: Broken-Access-Control
+    patterns:
+      - pattern: get_object_or_404(...)
+      - pattern-not-inside: |
+          get_object_or_404(...)
+          ...
+          ....check_object_permissions(...)
+      - pattern-not-inside: |
+          class $CLASS(...,...):
+            ...
+            permission_classes = [...,...]
+            ...
+            def $FUN(...,...):
+              ...
+              get_object_or_404(...)
+              ...
+
+    message: Broken Access Control
+    languages:
+      - python
+    severity: WARNING
+    metadata:
+      category: security
+      subcategory:
+        - vuln
+      cwe:
+        - "CWE 863: Incorrect Authorization"
+      confidence: MEDIUM
+      likelihood: HIGH
+      impact: HIGH
+      owasp:
+        - A1:2021 Broken Access Control
+      technology:
+        - django

@@ -1,0 +1,25 @@
+rules:
+- id: permission_classes
+  patterns:
+    - pattern-either:
+      - pattern: |
+          @action(..., permission_classes=[AllowAny], ...)
+      - pattern: permission_classes=(permissions.AllowAny,...)
+  message: Access is broken
+  languages: [python]
+  severity: WARNING
+  metadata: 
+      category: security
+      subcategory:
+        - vuln
+      cwe:
+        - "CWE 284: The software does not restrict or incorrectly restricts access to
+          a resource from an unauthorized actor."
+      confidence: LOW
+      likelihood: MEDIUM
+      impact: HIGH
+      owasp:
+        - A1:2021 Broken Access Control
+      technology:
+        - django
+      

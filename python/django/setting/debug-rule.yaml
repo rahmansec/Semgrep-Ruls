@@ -1,0 +1,20 @@
+rules:
+- id: DEBUG_rule
+  pattern: DEBUG=True
+  message: DEBUG mode is on
+  languages: [python]
+  severity: ERROR
+  metadata: 
+      category: security
+      subcategory:
+        - vuln
+      cwe:
+        - "CWE 489: Active Debug Code"
+      technology:
+        - django
+      owasp:
+        - A5:2021 Security Misconfiguration
+      confidence: LOW
+      likelihood: HIGH
+      impact: HIGH
+      

@@ -1,0 +1,10 @@
+rules:
+  - id: get_all_the_information
+    pattern: queryset = ....objects.all()
+    message: Get All The Information
+    languages:
+      - python
+    severity: WARNING
+    metadata:
+      technology:
+        - django

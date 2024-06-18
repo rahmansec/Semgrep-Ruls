@@ -1,0 +1,26 @@
+rules:
+  - id: CORS-Misconfiguration
+    pattern: CORS_ORIGIN_ALLOW_ALL = True
+    pattern-not-inside: |
+      CORS_ORIGIN_ALLOW_ALL = False
+      CORS_ORIGIN_WHITELIST = (
+      "https://example.com",
+        )
+      ...
+    message: CORS Misconfiguration
+    languages:
+      - python
+    severity: ERROR
+    metadata:
+      category: security
+      subcategory:
+        - vuln
+      cwe:
+        - "CWE 942: Permissive Cross-domain Policy with Untrusted Domains"
+      confidence: MEDIUM
+      likelihood: MEDIUM
+      impact: MEDIUM
+      owasp:
+        - A5:2021 Security Misconfiguration
+      technology:
+        - django

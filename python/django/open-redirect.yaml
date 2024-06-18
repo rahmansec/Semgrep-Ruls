@@ -1,0 +1,20 @@
+rules:
+  - id: open_redirect
+    patterns:
+      - pattern: redirect(...,$VAR,...)
+      - pattern-not-inside: redirect("...")
+    message: open redirect
+    languages:
+      - python
+    severity: WARNING
+    metadata:
+      category: security
+      subcategory:
+        - vuln
+      cwe:
+        - "CWE 601: URL Redirection to Untrusted Site ('Open Redirect')"
+      confidence: LOW
+      likelihood: LOW
+      impact: MEDIUM
+      owasp:
+        - A5:2021 Security Misconfiguration

@@ -1,0 +1,14 @@
+rules:
+  - id: CSRF_secure_rule
+    pattern: CSRF_COOKIE_SECURE= True
+    message: CSRF COOKIE SECURE
+    languages:
+      - python
+    severity: WARNING
+    metadata:
+      category: security
+      subcategory:
+        - guardrail
+      technology:
+        - django
+      source_rule_url: https://docs.djangoproject.com/en/4.2/ref/settings/#std-setting-CSRF_COOKIE_SECURE

@@ -1,0 +1,25 @@
+rules:
+  - id: PATH-TRAVELSL
+    languages:
+      - python
+    message: PATH-TRAVELSL
+    mode: taint
+    pattern-sources:
+      - pattern: $VAR = $SELF.request.data.get("...")
+      - pattern: $VAR = request.data.get("...")
+    pattern-sinks:
+      - pattern: os.path.join(...,$X,...)
+    severity: WARNING
+    metadata:
+      category: security
+      subcategory:
+        - vuln
+      cwe:
+        - "CWE 26: Path Traversal: '/dir/../filename'"
+      owasp:
+        - A6:2021 Vulnerable and Outdated Components
+      impact: MEDIUM
+      likelihood: MEDIUM
+      confidence: MEDIUM
+      technology:
+        - django

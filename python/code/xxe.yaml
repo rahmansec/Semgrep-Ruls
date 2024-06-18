@@ -1,0 +1,29 @@
+rules:
+  - id: xxe
+    patterns:
+      - pattern-either:
+          - pattern: import xml.etree.ElementTree
+          - pattern: from xml.etree.ElementTree import $X
+          - pattern: import xml.dom.minidom
+          - pattern: from xml.dom.minidom import $X
+          - pattern: import xmlrpc.client
+          - pattern: from xmlrpc.client import $X
+          - pattern-inside: |
+              def $FUC(...):
+                $X.$Y(...)
+              ...
+    message: XXE
+    languages:
+      - python
+    severity: WARNING
+    metadata:
+      category: security
+      subcategory:
+        - vuln
+      cwe:
+        - "CWE 611: Improper Restriction of XML External Entity Reference"
+      confidence: LOW
+      likelihood: MEDIUM
+      impact: HIGH
+      owasp:
+        - A4:2017 XML External Entities (XXE)
