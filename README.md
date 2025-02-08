@@ -44,7 +44,7 @@ pip3 install semgrep
 ```
 
 ```bash
-git clone https://github.com/Mr-Hosseinzadeh/Semgrep-Ruls.git
+git clone https://github.com/rahmansec/Semgrep-Ruls.git
 
 ```
 ```bash
